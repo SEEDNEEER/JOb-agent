@@ -1,19 +1,13 @@
+import os
 import requests
 
-BOT_TOKEN = "8998876003:AAGhh95ClkzhuerbNKlAdF4vd65cLmR6zIA"
-CHAT_ID = "909363302"
+BOT_TOKEN = os.environ["8998876003:AAGhh95ClkzhuerbNKlAdF4vd65cLmR6zIA"]
+CHAT_ID = os.environ["909363302"]
 
 message = """
-🚨 TEST JOB FOUND
+🚀 Job Agent Running
 
-Role: Content Writer
-
-Company: OpenAI
-
-Location: Remote
-
-Apply:
-https://example.com
+This message was sent from GitHub Actions.
 """
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -26,5 +20,4 @@ response = requests.post(
     }
 )
 
-print("Status Code:", response.status_code)
-print("Response:", response.text)
+print(response.text)
