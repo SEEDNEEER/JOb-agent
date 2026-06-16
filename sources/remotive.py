@@ -10,13 +10,16 @@ def fetch():
         data = response.json().get("jobs", [])
         jobs = []
         for item in data:
-            # Filter jobs older than 48 hours
             date_str = item.get("publication_date", "")
             if date_str:
-                job_date = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-                age_hours = (datetime.now(timezone.utc) - job_date).total_seconds() / 3600
-                if age_hours > 48:
-                    continue
+                try:
+                    job_date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S")
+                    job_date = job_date.replace(tzinfo=timezone.utc)
+                    age_hours = (datetime.now(timezone.utc) - job_date).total_seconds() / 3600
+                    if age_hours > 48:
+                        continue
+                except:
+                    pass
 
             jobs.append({
                 "id": f"remotive-{item.get('id')}",
