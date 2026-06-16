@@ -1,3 +1,6 @@
+import os
+print("BOT_TOKEN:", os.environ.get("BOT_TOKEN", "NOT FOUND"))
+print("CHAT_ID:", os.environ.get("CHAT_ID", "NOT FOUND"))
 from sources import remoteok, arbeitnow, remotive, wellfound
 from core.filter import is_relevant
 from core.deduplicator import deduplicate

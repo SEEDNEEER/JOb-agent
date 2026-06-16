@@ -34,10 +34,8 @@ NEGATIVE_KEYWORDS = [
 
 def is_relevant(job):
     title = job.get("title", "").lower()
-    tags = " ".join(job.get("tags", [])).lower()
-    combined = title + " " + tags
 
-    has_keyword = any(kw in combined for kw in KEYWORDS)
+    has_keyword = any(kw in title for kw in KEYWORDS)
     has_negative = any(neg in title for neg in NEGATIVE_KEYWORDS)
 
     return has_keyword and not has_negative

@@ -2,7 +2,7 @@ import os
 import requests
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
-CHAT_ID = os.environ["CHAT_ID"]
+CHAT_ID = "909363302"
 
 def send_jobs(jobs):
     for job in jobs:
